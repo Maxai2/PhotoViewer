@@ -7,59 +7,59 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="400" Width="525" WindowStartupLocation="CenterScreen">
 
-    <Grid Width="505" MinWidth="505"> 
+	<Grid Width="505" MinWidth="505">
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="200"/>
-            <RowDefinition Height="40"/>
-            <RowDefinition Height="90"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="30"/>
+			<RowDefinition Height="200"/>
+			<RowDefinition Height="40"/>
+			<RowDefinition Height="90"/>
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition/>
+			<ColumnDefinition/>
+			<ColumnDefinition/>
+		</Grid.ColumnDefinitions>
 
-        <TextBlock Name="FolderPath" Grid.Row="0" Grid.ColumnSpan="3"></TextBlock>
+		<TextBlock Name="FolderPath" Grid.Row="0" Grid.ColumnSpan="3"></TextBlock>
 
-        <TreeView Grid.Row="1"/>
+		<TreeView Grid.Row="1"/>
 
-        <Border Grid.Row="1" Background="Teal" Grid.Column="1" BorderBrush="Black" BorderThickness="2">
-            <Image Margin="10"></Image>
-        </Border>
+		<Border Grid.Row="1" Background="Teal" Grid.Column="1" BorderBrush="Black" BorderThickness="2">
+			<Image Margin="10" Name="ImageFrame"/>
+		</Border>
 
-        <ScrollViewer Grid.Row="1" Grid.Column="2">
-            <ListBoxItem></ListBoxItem>
-        </ScrollViewer>
-        
-        <Grid Grid.Row="2" Grid.ColumnSpan="3">
+		<ScrollViewer Grid.Row="1" Grid.Column="2">
+			<ListBoxItem></ListBoxItem>
+		</ScrollViewer>
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="40"/>
-                <ColumnDefinition Width="160"/>
-                <ColumnDefinition Width="35"/>
-                <ColumnDefinition Width="35"/>
-                <ColumnDefinition Width="35"/>
-                <ColumnDefinition Width="160"/>
-                <ColumnDefinition Width="40"/>
-            </Grid.ColumnDefinitions>
+		<Grid Grid.Row="2" Grid.ColumnSpan="3">
 
-            <Border Grid.ColumnSpan="6" BorderBrush="Black" BorderThickness="1"/>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="40"/>
+				<ColumnDefinition Width="160"/>
+				<ColumnDefinition Width="35"/>
+				<ColumnDefinition Width="35"/>
+				<ColumnDefinition Width="35"/>
+				<ColumnDefinition Width="160"/>
+				<ColumnDefinition Width="40"/>
+			</Grid.ColumnDefinitions>
 
-            <Button Name="FolderOpen" Background="Transparent" Grid.Column="0" Content="🖿" Click="FolderOpen_Click"/>
-            <Button Name="OlderPhoto" Background="Transparent" Grid.Column="2" Content="⏪" Click="OlderPhoto_Click"/>
-            <Button Name="PlayButton" Background="Transparent" Grid.Column="3" Content="⏵" Click="PlayButton_Click"/>
-            <Button Name="NextPhoto" Background="Transparent" Grid.Column="4" Content="⏩" Click="NextPhoto_Click"/>
-            <Button Name="InfoAboutPhoto" Background="Transparent" Grid.Column="6" Content="🛈" Click="InfoAboutPhoto_Click"/>
-        </Grid>
+			<Border Grid.ColumnSpan="6" BorderBrush="Black" BorderThickness="1"/>
 
-        <ScrollViewer Grid.Row="3" Grid.ColumnSpan="3" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Disabled">
-            <StackPanel Name="PhotoButtonPanel" Orientation="Horizontal">
-                <Button Margin="10" Width="60" Content="+" Click="Button_Click"/>
-            </StackPanel>
-        </ScrollViewer>
+			<Button Name="FolderOpen" Background="Transparent" Grid.Column="0" Content="🖿" Click="FolderOpen_Click"/>
+			<Button Name="OlderPhoto" Background="Transparent" Grid.Column="2" Content="⏪" Click="OlderPhoto_Click"/>
+			<Button Name="PlayButton" Background="Transparent" Grid.Column="3" Content="⏵" Click="PlayButton_Click"/>
+			<Button Name="NextPhoto" Background="Transparent" Grid.Column="4" Content="⏩" Click="NextPhoto_Click"/>
+			<Button Name="InfoAboutPhoto" Background="Transparent" Grid.Column="6" Content="🛈" Click="InfoAboutPhoto_Click"/>
+		</Grid>
 
-    </Grid>
+		<ScrollViewer Grid.Row="3" Grid.ColumnSpan="3" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Disabled">
+			<StackPanel Name="PhotoButtonPanel" Orientation="Horizontal">
+				<Button Margin="10" Width="60" Content="+" Click="Button_Click"/>
+			</StackPanel>
+		</ScrollViewer>
+
+	</Grid>
 
 </Window>

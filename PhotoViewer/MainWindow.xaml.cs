@@ -23,6 +23,8 @@ namespace PhotoViewer
     /// </summary>
     public partial class MainWindow : Window
     {
+        List<FileInfo> list = new List<FileInfo>();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -67,6 +69,8 @@ namespace PhotoViewer
                 {
                     foreach (FileInfo item in folder.GetFiles())
                     {
+                        list.Add(item);
+
                         Button button = new Button();
 
                         button.Margin = new Thickness(10);
@@ -78,7 +82,10 @@ namespace PhotoViewer
                         PhotoButtonPanel.Children.Add(button);
                     }
                 }
+
+                ImageFrame.Source = $"{folder.FullName}";
             }
+
         }
 
         private void OlderPhoto_Click(object sender, RoutedEventArgs e)
