@@ -25,7 +25,7 @@
 
         <TextBlock Name="FolderPath" Grid.Row="0" Grid.ColumnSpan="3"></TextBlock>
 
-        <TreeView Name="TreeView" Width="130" Grid.Row="1"/>
+        <TreeView Name="tvPictures" Width="130" Grid.Row="1" MouseDoubleClick="tvPictures_MouseDoubleClick"/>
 
         <Border Grid.Row="1" Grid.Column="1" Background="Teal">
             <Image Stretch="Fill" Margin="10" Name="ImageFrame" MouseDown="ImageFrame_MouseDown"/>

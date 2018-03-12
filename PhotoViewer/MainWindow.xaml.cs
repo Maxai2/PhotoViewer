@@ -86,21 +86,19 @@ namespace PhotoViewer
                     {
                         list.Add(item);
 
-                        System.Windows.Controls.Button button = new System.Windows.Controls.Button();
+                        System.Windows.Controls.Button button = new System.Windows.Controls.Button
+                        {
+                            Margin = new Thickness(10),
+                            Width = 60,
+                            Background = new ImageBrush(new BitmapImage(new Uri(item.FullName))),
+                            Name = "Pic" + count
 
-                        button.Margin = new Thickness(10);
-
-                        button.Width = 60;
-
-                        button.Background = new ImageBrush(new BitmapImage(new Uri(item.FullName)));
-
-                        //string name = item.Name.Trim(new char[] {' ', '(', });
-
-                        //string name = item.Name.Replace('.', ' ').Replace('(',' ').Replace(')',' ').Replace(' ','_');
-
-                        button.Name = "Pic" + count;
-
+                            //string name = item.Name.Trim(new char[] {' ', '(', });
+                            //string name = item.Name.Replace('.', ' ').Replace('(',' ').Replace(')',' ').Replace(' ','_');
+                        };
                         PhotoButtonPanel.Children.Add(button);
+
+                        tvPictures.Items.Add(new TreeViewItem() { Header = "Pic" + count });
 
                         count++;
                     }
@@ -117,8 +115,6 @@ namespace PhotoViewer
                 box.Content += "Creation time:\t" + file.CreationTime;
 
                 InfoListBox.Items.Add(box);
-
-
             }
         }
         //---------------------------------------------------------------------------------------
@@ -146,15 +142,16 @@ namespace PhotoViewer
 
                     list.Add(file);
 
-                    System.Windows.Controls.Button button = new System.Windows.Controls.Button();
+                    System.Windows.Controls.Button button = new System.Windows.Controls.Button
+                    {
+                        Margin = new Thickness(10),
 
-                    button.Margin = new Thickness(10);
+                        Width = 60,
 
-                    button.Width = 60;
+                        Background = new ImageBrush(new BitmapImage(new Uri(newPathFile))),
 
-                    button.Background = new ImageBrush(new BitmapImage(new Uri(newPathFile)));
-
-                    button.Name = "Pic" + (list.Count - 1);
+                        Name = "Pic" + (list.Count - 1)
+                    };
 
                     PhotoButtonPanel.Children.Add(button);
                 }
@@ -259,13 +256,26 @@ namespace PhotoViewer
             if (MouseDownClick)
             {
                 InfoListBox.Width = 0;
-                TreeView.Width = 0;
+                tvPictures.Width = 0;
             }
             else
             {
                 InfoListBox.Width = 130;
-                TreeView.Width = 130;
+                tvPictures.Width = 130;
             }
+        }
+
+        private void tvPictures_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            var item = e.Source as TreeViewItem;
+
+            int num = Convert.ToInt16(item.Name.Remove(0, 3));
+
+            FileInfo file = new FileInfo(list[num].FullName);
+
+            ImageFrame.Source = new BitmapImage(new Uri(file.ToString()));
+
+            current = num;
         }
     }
 }
