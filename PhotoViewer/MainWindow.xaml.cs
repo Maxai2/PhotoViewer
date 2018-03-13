@@ -96,9 +96,16 @@ namespace PhotoViewer
                             //string name = item.Name.Trim(new char[] {' ', '(', });
                             //string name = item.Name.Replace('.', ' ').Replace('(',' ').Replace(')',' ').Replace(' ','_');
                         };
+
+                       // button.MouseDoubleClick += new System.Windows.Input.MouseButtonEventHandler(tvPictures_MouseDoubleClick);
+
                         PhotoButtonPanel.Children.Add(button);
 
-                        tvPictures.Items.Add(new TreeViewItem() { Header = "Pic" + count });
+                        var i = new TreeViewItem() { Header = "Pic" + count };
+
+                        i.MouseDoubleClick += tvPictures_MouseDoubleClick;
+
+                        tvPictures.Items.Add(i);
 
                         count++;
                     }
@@ -264,19 +271,30 @@ namespace PhotoViewer
                 tvPictures.Width = 130;
             }
         }
-
+        //---------------------------------------------------------------------------------------
         private void tvPictures_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            var item = e.Source as TreeViewItem;
+            var control = sender as TreeViewItem;
 
-            int num = Convert.ToInt16(item.Name.Remove(0, 3));
+            int num = Convert.ToInt16(control.Header.ToString().Remove(0, 3));
 
             FileInfo file = new FileInfo(list[num].FullName);
 
             ImageFrame.Source = new BitmapImage(new Uri(file.ToString()));
 
             current = num;
+
+            InfoListBox.Items.Clear();
+
+            ListBoxItem box = new ListBoxItem();
+            box.Content += "Attributes:\t" + file.Attributes + "\n";
+            box.Content += "Size:\t\t" + file.Length + "b\n";
+            box.Content += "Name:\t\t" + file.Name + "\n";
+            box.Content += "Creation time:\t" + file.CreationTime;
+
+            InfoListBox.Items.Add(box);
         }
+        //---------------------------------------------------------------------------------------
     }
 }
 //---------------------------------------------------------------------------------------
